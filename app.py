@@ -135,8 +135,6 @@ def load_models():
 
 model, rf_model, lr_model, dt_model, scaler, le, feature_names = load_models()
 
-model, scaler, le, feature_names = load_models()
-
 marital_map = {"Single":1,"Married":2,"Widower":3,"Divorced":4,"Facto Union":5,"Legally Separated":6}
 application_mode_map = {
     "1st phase - General quota":1,"Ordinance No. 612/93":2,
