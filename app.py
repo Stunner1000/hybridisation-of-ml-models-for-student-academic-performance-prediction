@@ -333,9 +333,13 @@ input_data, profile = user_input()
 predict_clicked = st.sidebar.button("🔍  PREDICT OUTCOME")
 
 if predict_clicked:
-    input_scaled   = scaler.transform(input_data)
-    prediction     = model.predict(input_scaled)
-    probabilities  = model.predict_proba(input_scaled)[0]
+    input_scaled = scaler.transform(input_data)
+    rf_proba = rf_model.predict_proba(input_scaled)
+    lr_proba = lr_model.predict_proba(input_scaled)
+    dt_proba = dt_model.predict_proba(input_scaled)
+    meta_input = np.hstack([rf_proba, lr_proba, dt_proba])
+    prediction = model.predict(meta_input)
+    probabilities = model.predict_proba(meta_input)[0]
     predicted_class = le.inverse_transform(prediction)[0]
     class_probs    = dict(zip(le.classes_, probabilities))
 
