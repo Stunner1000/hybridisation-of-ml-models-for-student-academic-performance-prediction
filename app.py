@@ -124,11 +124,16 @@ st.markdown("""
 
 @st.cache_resource
 def load_models():
-    model        = joblib.load("stacking_model.pkl")
-    scaler       = joblib.load("scaler.pkl")
-    le           = joblib.load("label_encoder.pkl")
+    model = joblib.load("stacking_model.pkl")
+    rf_model = joblib.load("rf_model.pkl")
+    lr_model = joblib.load("lr_model.pkl")
+    dt_model = joblib.load("dt_model.pkl")
+    scaler = joblib.load("scaler.pkl")
+    le = joblib.load("label_encoder.pkl")
     feature_names = joblib.load("feature_names.pkl")
-    return model, scaler, le, feature_names
+    return model, rf_model, lr_model, dt_model, scaler, le, feature_names
+
+model, rf_model, lr_model, dt_model, scaler, le, feature_names = load_models()
 
 model, scaler, le, feature_names = load_models()
 
